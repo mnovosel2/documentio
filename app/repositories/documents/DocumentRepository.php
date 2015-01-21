@@ -35,14 +35,15 @@ class DocumentRepository implements DocumentInterface{
             $documentToSave=new \Document();
             $documentToSave->fill($structuredDocument);
             $documentToSave->save();
+            $lastDocumentId=$documentToSave->id;
             if($file) {
                 $ext = $file->guessExtension();
                 $filename=md5($file->getClientOriginalName().strtotime("now")).'_'.$file->getClientOriginalName();
                 $file->move(public_path().'/assets/uploaded/',$filename);
                 $path=public_path().'/assets/uploaded/'.$filename;
-                \DB::insert("INSERT INTO documents(logo) VALUES (lo_import('$path'));");
+                \DB::update("UPDATE documents SET logo=lo_import('$path') WHERE id=".$lastDocumentId.";");
             }
-            $lastDocumentId=$documentToSave->id;
+
             $version=new \Version();
             $version->version_hash=substr(md5($document['heading'].strtotime("now")),0,15);
             $version->parent_document=$lastDocumentId;
