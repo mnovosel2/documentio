@@ -16,7 +16,7 @@
     </div>
 </div>
 
-{{ Form::model($document, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('documents.update', $document->id))) }}
+{{ Form::model($document, array('class' => 'form-horizontal', 'method' => 'PATCH', 'route' => array('documents.update', $document->id,$repositoryId))) }}
 
         <div class="form-group">
 
@@ -54,12 +54,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            {{ Form::label('logo', 'Logo:', array('class'=>'col-md-2 control-label')) }}
-            <div class="col-sm-10">
-              {{ Form::text('logo', Input::old('logo'), array('class'=>'form-control', 'placeholder'=>'Logo')) }}
-            </div>
-        </div>
+
 
         <div class="form-group">
             {{ Form::label('tags', 'Tags:', array('class'=>'col-md-2 control-label')) }}

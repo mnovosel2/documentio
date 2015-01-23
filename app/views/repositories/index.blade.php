@@ -1,7 +1,7 @@
 @extends('layouts.scaffold')
 
 @section('main')
-
+@include('documents.searchbar')
 <h1>All Repositories</h1>
 
 <p>{{ link_to_route('repositories.create', 'Add New Repository', null, array('class' => 'btn btn-lg btn-success')) }}</p>

@@ -18,10 +18,11 @@
 
 {{ Form::open(array('files'=>true, 'class' => 'form-horizontal')) }}
 
+       {{Form::hidden('repositoryId',$document['repository_id'])}}
         <div class="form-group">
             {{Form::label('version_hash','Version ID',array('class'=>'col-md-2 control-label'))}}
              <div class="col-sm-10">
-                {{ Form::text('version_hash',$document['version_hash'], array('class'=>'form-control', 'disabled'=>'true')) }}
+                {{ Form::text('version_hash',$document['version_hash'], array('class'=>'form-control', 'readonly'=>'readonly')) }}
               </div>
         </div>
         <div class="form-group">
@@ -35,13 +36,6 @@
              <div class="col-sm-10">
                 {{ Form::textarea('document', $document['structured'], array('class'=>'form-control', 'placeholder'=>'Document')) }}
               </div>
-        </div>
-
-        <div class="form-group">
-            {{ Form::label('logo', 'Logo:', array('class'=>'col-md-2 control-label')) }}
-            <div class="col-sm-10">
-             {{Form::file('logo',['class'=>'form-control'])}}
-            </div>
         </div>
 
         <div class="form-group">
@@ -59,9 +53,9 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('formats', 'Format:', array('class'=>'col-md-2 control-label')) }}
+            {{ Form::label('format', 'Format:', array('class'=>'col-md-2 control-label')) }}
             <div class="col-sm-10">
-                {{Form::select('formats',['html'=>'html','pdf'=>'pdf' ],['html'],['class'=>'form-control'])}}
+                {{Form::select('format',['html'=>'html','pdf'=>'pdf' ],['html'],['class'=>'form-control'])}}
             </div>
         </div>
 

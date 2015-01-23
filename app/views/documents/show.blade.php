@@ -4,7 +4,7 @@
 
 <h1>Show Document</h1>
 
-<p>{{ link_to_route('Documents.index', 'Return to All Documents', null, array('class'=>'btn btn-lg btn-primary')) }}</p>
+<p>{{ link_to_route('documents.index', 'Return to All documents', null, array('class'=>'btn btn-lg btn-primary')) }}</p>
 
 <table class="table table-striped">
 	<thead>
@@ -23,20 +23,20 @@
 
 	<tbody>
 		<tr>
-			<td>{{{ $Document->repository_id }}}</td>
-					<td>{{{ $Document->heading }}}</td>
-					<td>{{{ $Document->subheading }}}</td>
-					<td>{{{ $Document->abstract }}}</td>
-					<td>{{{ $Document->content }}}</td>
-					<td>{{{ $Document->logo }}}</td>
-					<td>{{{ $Document->tags }}}</td>
-					<td>{{{ $Document->url }}}</td>
-					<td>{{{ $Document->format }}}</td>
+			<td>{{{ $document->repository_id }}}</td>
+					<td>{{{ $document->heading }}}</td>
+					<td>{{{ $document->subheading }}}</td>
+					<td>{{{ $document->abstract }}}</td>
+					<td>{{{ $document->content }}}</td>
+					<td>{{{ $document->logo }}}</td>
+					<td>{{{ $document->tags }}}</td>
+					<td>{{{ $document->url }}}</td>
+					<td>{{{ $document->format }}}</td>
                     <td>
-                        {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('Documents.destroy', $Document->id))) }}
+                        {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('documents.destroy', $document->id))) }}
                             {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
                         {{ Form::close() }}
-                        {{ link_to_route('Documents.edit', 'Edit', array($Document->id), array('class' => 'btn btn-info')) }}
+                        {{ link_to_route('documents.edit', 'Edit', array($document->id), array('class' => 'btn btn-info')) }}
                     </td>
 		</tr>
 	</tbody>

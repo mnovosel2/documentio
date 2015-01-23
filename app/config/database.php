@@ -54,8 +54,8 @@ return array(
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',
-            'host'=>'localhost',
-			/*'host'     => '178.62.74.13',*/
+            /*'host'=>'localhost',*/
+			'host'     => '178.62.74.13',
 			'database' => 'tbp',
 			'username' => 'postgres',
 			'password' => 'pocetak',

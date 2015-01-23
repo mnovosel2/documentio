@@ -62,9 +62,9 @@ class DocumentController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id,$repositoryId)
 	{
-       return  $this->document->edit($id);
+       return  $this->document->edit($id,$repositoryId);
 	}
 
 	/**
@@ -73,11 +73,11 @@ class DocumentController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id,$repositoryId)
 	{
-        $data=Input::all();
+        $data=array_except(Input::all(),['_method','_token']);
 
-		return $this->document->update($id,$data);
+		return $this->document->update($id,$repositoryId,$data);
 	}
 
 	/**
@@ -93,10 +93,29 @@ class DocumentController extends BaseController {
 	}
     public function versions($documentId){
       $documents=$this->document->versions($documentId);
+
       return View::make('versions.index',['documents'=>$documents,'documentId'=>$documentId]);
     }
     public function createVersion($documentId){
-        $document=$this->document->createVersion($documentId);
-        return View::make('versions.create',compact('document'));
+        $parsedData=[];
+        if(Input::all()){
+            $data=Input::except(['token','_method']);
+            $parsedData=$this->parser->parse($data['document']);
+            $parsedData['version_hash']=$data['version_hash'];
+            $parsedData['description']=$data['description'];
+            $parsedData['tags']=$data['tags'];
+            $parsedData['url']=$data['url'];
+            $parsedData['format']=$data['format'];
+            $parsedData['repositoryId']=$data['repositoryId'];
+        }
+        if(!empty($parsedData)){
+            $document=$this->document->createVersion($documentId,$parsedData);
+            return $document;
+        }else{
+            $document=$this->document->createVersion($documentId);
+            return View::make('versions.create',compact('document'));
+        }
+
+
     }
 }

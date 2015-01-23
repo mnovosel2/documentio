@@ -43,11 +43,14 @@ Route::delete('auth', 'Tappleby\AuthToken\AuthTokenController@destroy');
 Route::resource('repositories', 'RepositoriesController');
 
 Route::resource('documents','DocumentController');
+Route::post('/documents/search',['as'=>'documents.search','uses'=>'SearchController@index']);
 Route::get('/documents/list/{repositoryId}',['as'=>'documents.index','uses'=>'DocumentController@index']);
 Route::post('/documents/{repositoryId}',['as'=>'documents.store','uses'=>'DocumentController@store']);
 Route::get('/documents/create/{repositoryId}',['as'=>'documents.create','uses'=>'DocumentController@create']);
-Route::get('/documents/edit/{documentId}',['as'=>'documents.edit','uses'=>'DocumentController@edit']);
+Route::get('/documents/edit/{documentId}/{repositoryId}',['as'=>'documents.edit','uses'=>'DocumentController@edit']);
+Route::patch('/documents/{documentId}/{repositoryId}',['as'=>'documents.update','uses'=>'DocumentController@update']);
 Route::get('/documents/versions/{documentId}',['as'=>'documents.versions','uses'=>'DocumentController@versions']);
 Route::delete('/documents/{documentId}/{repositoryId}',['as'=>'documents.destroy','uses'=>'DocumentController@destroy']);
 Route::get('/documents/versions/create/{documentId}',['as'=>'versions.create','uses'=>'DocumentController@createVersion']);
+Route::post('/documents/versions/create/{documentId}',['as'=>'versions.create','uses'=>'DocumentController@createVersion']);
 

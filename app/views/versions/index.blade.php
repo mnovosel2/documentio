@@ -10,24 +10,40 @@
 			<tr>
 				<th>Heading</th>
 				<th>Version</th>
-				<th>Date created</th>
+				<th>Options</th>
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			@foreach ($documents as $document)
-				<tr>
-					<td>{{{ $document->heading }}}</td>
-					<td>{{{ $document->version_hash }}}</td>
-					<td>{{{date("d-m-Y", strtotime($document->created_at))}}}</td>
+			 	<tr>
+
+             	    <td>{{{ $document[0]['heading'] }}}</td>
+             		<td>{{{ $document[0]['version_hash'] }}}</td>
+
                     <td>
-                        {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('documents.destroy', $document->id))) }}
-                            {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                        {{ Form::close() }}
-                        {{ link_to_route('documents.edit', 'Edit', array($document->id), array('class' => 'btn btn-info')) }}
+                       {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('documents.destroy', $document[0]['id']))) }}
+                       {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                       {{ Form::close() }}
+                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target={{'#'.$document[0]['id']}}>
+                         Preview
+                       </button>
                     </td>
-				</tr>
+             	</tr>
+             	<div class="modal fade" id={{$document[0]['id']}} tabindex="-1" role="dialog" aria-labelledby={{$document[0]['heading']}} aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id={{$document[0]['heading']}}>{{$document[0]['heading']}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        {{$document[0]['content']}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
 			@endforeach
 		</tbody>
 	</table>
