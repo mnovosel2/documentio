@@ -18,6 +18,16 @@ class DocumentsTableSeeder extends Seeder {
                 'url' => 'testurl',
                 'parent'=>true,
                 'logo_path'=>'http://178.62.74.13/assets/uploaded/logo_default.jpg')
+              array('repository_id' => $repository->id,
+                  'heading' => 'TestniDokumentDva',
+                  'subheading' => 'TestniPodnaslovDva',
+                  'abstract' => 'TestniAbstractDva',
+                  'content' => 'TestniSadrzajDva',
+                  'logo' => null,
+                  'tags'=>'{OznakaDva1, OznakaDva2}',
+                  'url' => 'testurlDva',
+                  'parent'=>true,
+                  'logo_path'=>'http://178.62.74.13/assets/uploaded/logo_default.jpg')
         );
 
 		// Uncomment the below to run the seeder

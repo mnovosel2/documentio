@@ -10,7 +10,10 @@ class RepositoriesTableSeeder extends Seeder {
 		$repositories = array(
             array('name' => 'TestRepo','owner_id' => 1,
                 'description' => 'TestniRepozitorijOpis',
-                'tags' => '{OznakaRepo1,OznakaRepo2}')
+                'tags' => '{OznakaRepo1,OznakaRepo2}'),
+            array('name' => 'TestRepoDva','owner_id' => 1,
+                'description' => 'TestniRepozitorijOpisDva',
+                'tags' => '{OznakaRepoDva1,OznakaRepoDva2}')
 		    );
 
 		// Uncomment the below to run the seeder
