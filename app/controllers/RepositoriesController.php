@@ -49,7 +49,7 @@ class RepositoriesController extends BaseController {
 	{
 		$input = Input::all();
         $user=$this->user->getLoggedUser();
-        $input['tags']="{".$input['tags']."}";
+        $input['tags']=$input['tags'];
         $input['owner_id']=$user->id;
 		$validation = Validator::make($input, Repository::$rules);
 

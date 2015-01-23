@@ -9,7 +9,7 @@
 
             <input type="password" name="password" placeholder="Password..." id="password"/>
 
-            <input type="submit" id="sbn-btn"/>
+            <input type="submit" id="sbn-btn" value="Prijavi se"/>
 
         </form>
 
