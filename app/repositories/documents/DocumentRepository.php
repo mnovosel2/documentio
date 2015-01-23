@@ -108,6 +108,7 @@ class DocumentRepository implements DocumentInterface{
             $versionData['document_id']=$documentToCreate->id;
             $versionData['parent_document']=$documentId;
             $versionData['version_hash']=$parsedData['version_hash'];
+            $versionData['description']=$data['description'];
             $versionToCreate=new \Version();
             $versionToCreate->fill($versionData);
             $versionToCreate->save();
