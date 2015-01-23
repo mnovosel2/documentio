@@ -38,7 +38,7 @@ class DocumentRepository implements DocumentInterface{
                 $filename=md5($file->getClientOriginalName().strtotime("now")).'_'.$file->getClientOriginalName();
                 $file->move(public_path().'/assets/uploaded/',$filename);
                 $path=public_path().'/assets/uploaded/'.$filename;
-                \DB::update("UPDATE documents SET logo=lo_import('$path'),SET logo_path=$path WHERE id=".$lastDocumentId.";");
+                \DB::update("UPDATE documents SET logo=lo_import('$path'),SET logo_path='$path' WHERE id=".$lastDocumentId.";");
             }
 
             $version=new \Version();
