@@ -82,6 +82,7 @@ class DocumentRepository implements DocumentInterface{
             $document=\Document::where('id','=',$version['document_id'])->get()->toArray();
             if($document[0]['heading']){
                 $document[0]['version_hash']=$version['version_hash'];
+                $document[0]['description']=$version['description'];
                 $documents[]=$document;
             }
 

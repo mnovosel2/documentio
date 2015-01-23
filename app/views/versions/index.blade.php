@@ -9,6 +9,7 @@
 		<thead>
 			<tr>
 				<th>Heading</th>
+				<th>Description</th>
 				<th>Version</th>
 				<th>Options</th>
 				<th>&nbsp;</th>
@@ -20,6 +21,7 @@
 			 	<tr>
 
              	    <td>{{{ $document[0]['heading'] }}}</td>
+             	    <td>{{$document[0]['description']}}</td>
              		<td>{{{ $document[0]['version_hash'] }}}</td>
 
                     <td>
@@ -39,7 +41,9 @@
                         <h4 class="modal-title" id={{$document[0]['heading']}}>{{$document[0]['heading']}}</h4>
                       </div>
                       <div class="modal-body">
+                      @if(!empty($document[0]['logo_path']))
                        <img src={{$document[0]['logo_path']}} alt="document-logo" style="display:block;max-width:100%"/>
+                      @endif
                         <p style="font-size:14px">{{$document[0]['abstract']}}</p>
                          <hr>
                         <p>{{$document[0]['content']}}</p>
