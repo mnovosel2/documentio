@@ -25,9 +25,6 @@
              		<td>{{{ $document[0]['version_hash'] }}}</td>
 
                     <td>
-                       {{ Form::open(array('style' => 'display: inline-block;', 'method' => 'DELETE', 'route' => array('documents.destroy', $document[0]['id'],$document[0]['repository_id']))) }}
-                       {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
-                       {{ Form::close() }}
                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target={{'#'.$document[0]['id']}}>
                          Preview
                        </button>

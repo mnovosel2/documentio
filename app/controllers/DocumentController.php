@@ -102,7 +102,7 @@ class DocumentController extends BaseController {
             $data=Input::except(['token','_method']);
             $parsedData=$this->parser->parse($data['document']);
             $parsedData['version_hash']=$data['version_hash'];
-            
+
             $parsedData['description']=$data['description'];
             $parsedData['tags']=$data['tags'];
             $parsedData['url']=$data['url'];
