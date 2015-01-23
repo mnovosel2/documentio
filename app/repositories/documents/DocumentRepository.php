@@ -9,7 +9,7 @@ class DocumentRepository implements DocumentInterface{
 
             $document =\Document::find($documentId)->update($data);
 
-            return \Redirect::route('documents.index',$repositoryId);
+            return \Redirect::route('documents.index',$data['repository_id']);
         }
     }
     public function store($repositoryId,$data,$file){
@@ -18,7 +18,7 @@ class DocumentRepository implements DocumentInterface{
         $structuredDocument['subheading']=trim(preg_replace('/\s\s+/', ' ',$document['subheading']));
         $structuredDocument['abstract']=trim(preg_replace('/\s\s+/', ' ',$document['abstract']));
         $structuredDocument['content']=trim(preg_replace('/\s\s+/', ' ',$document['content']));
-        $structuredDocument['tags']='{'.$data['tags'].'}';
+        $structuredDocument['tags']=$data['tags'];
         $structuredDocument['url']=$data['url'];
         $structuredDocument['format']=$data['formats'];
         $structuredDocument['repository_id']=$repositoryId;

@@ -10,13 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/',function(){
-    return View::make('home.index');
-});
+
 /**************Views******************/
 Route::get('/admin', ['as' => 'adminPanelRoute', 'uses' => 'PanelController@index']);
 Route::get('/account/logout', [ 'as' => 'logoutRoute', 'uses' => 'AccountController@logout' ]);
-Route::get('/login', [ 'as' => 'loginRoute', 'uses' => 'AccountController@loginForm' ]);
+Route::get('/', [ 'as' => 'loginRoute', 'uses' => 'AccountController@loginForm' ]);
 Route::get('/register', [ 'as' => 'registerRoute', 'uses' => 'AccountController@registerForm' ]);
 Route::get('/logout',['as'=>'logoutRoute','uses'=>'AccountApiController@logout']);
 /**************Views******************/
