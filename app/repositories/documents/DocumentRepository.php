@@ -33,12 +33,14 @@ class DocumentRepository implements DocumentInterface{
             $documentToSave->fill($structuredDocument);
             $documentToSave->save();
             $lastDocumentId=$documentToSave->id;
+
             if($file) {
                 $ext = $file->guessExtension();
                 $filename=md5($file->getClientOriginalName().strtotime("now")).'_'.$file->getClientOriginalName();
                 $file->move(public_path().'/assets/uploaded/',$filename);
                 $path=public_path().'/assets/uploaded/'.$filename;
-                \DB::update("UPDATE documents SET logo=lo_import('$path'), logo_path='$path' WHERE id=".$lastDocumentId.";");
+                $webPath='http://178.62.74.13/assets/uploaded/'.$filename;
+                \DB::update("UPDATE documents SET logo=lo_import('$path'), logo_path='$webPath' WHERE id=".$lastDocumentId.";");
             }
 
             $version=new \Version();
