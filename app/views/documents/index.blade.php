@@ -42,7 +42,7 @@
                         <h4 class="modal-title" id={{$document->heading}}>{{$document->heading}}</h4>
                       </div>
                       <div class="modal-body">
-                        <img src={{$document->logo}} alt="document-logo" style="max-width: 60px !important"/>
+                        <img src={{$document->logo_path}} alt="document-logo" style="max-width: 60px !important"/>
                         {{$document->content}}
                       </div>
                     </div>
