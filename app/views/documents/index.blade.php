@@ -42,8 +42,10 @@
                         <h4 class="modal-title" id={{$document->heading}}>{{$document->heading}}</h4>
                       </div>
                       <div class="modal-body">
-                        <img src={{$document->logo_path}} alt="document-logo" style="display:block"/>
-                        {{$document->content}}
+                        <img src={{$document->logo_path}} alt="document-logo" style="display:block; max-width:100%;"/>
+                        <p style="font-size:14px">{{$document->abstract}}</p>
+                       <hr>
+                        <p>{{$document->content}}</p>
                       </div>
                     </div>
                   </div>
